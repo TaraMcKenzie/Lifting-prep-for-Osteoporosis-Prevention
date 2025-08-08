@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pelvic Floor & Shoulder Strength</title>
+    <!-- Tailwind CSS for modern styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom CSS for brand colors and specific layout requirements */
+        :root {
+            --primary-dark: #2c3e50; /* A dark navy/charcoal from the website */
+            --light-grey: #f9f9f9; /* A soft off-white */
+            --accent-peach: #f4e8d8; /* A light, warm peach color */
+            --text-color: #333;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light-grey);
+            color: var(--text-color);
+        }
+
+        .tab-container {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .tab-button {
+            padding: 0.75rem 2rem;
+            background-color: white;
+            border-radius: 9999px; /* This makes the tabs fully round */
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+
+        .tab-button:hover {
+            background-color: var(--accent-peach);
+            color: var(--primary-dark);
+        }
+
+        .tab-button.active {
+            background-color: var(--primary-dark);
+            color: white;
+        }
+
+        .tab-content {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            line-height: 1.6;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+    </style>
+</head>
+<body class="p-8 md:p-12">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl md:text-4xl font-bold text-center mb-10 text-[var(--primary-dark)]">Build Your Lifting Strength</h1>
+
+        <!-- Tab Navigation -->
+        <div class="tab-container" role="tablist">
+            <button id="description-tab" class="tab-button active" role="tab" aria-controls="description-content" aria-selected="true">
+                Description
+            </button>
+            <button id="video-tab" class="tab-button" role="tab" aria-controls="video-content" aria-selected="false">
+                Video
+            </button>
+        </div>
+
+        <!-- Tab Content -->
+        <div id="description-content" class="tab-content" role="tabpanel">
+            <h2 class="text-2xl font-semibold mb-4 text-[var(--primary-dark)]">Lesson: The Foundation of Strength</h2>
+            <p class="mb-4">
+                This lesson focuses on creating a strong, stable foundation for all your lifting activities. By specifically targeting the core system, which includes the pelvic floor and the muscles that stabilize the shoulders, we can improve our ability to lift heavier weights safely and effectively.
+            </p>
+            <p class="font-bold">Key Objectives:</p>
+            <ul class="list-disc list-inside space-y-2">
+                <li><p><span class="font-bold">Understand the Core System:</span> Learn what the core system is and why it's more than just your abs.</p></li>
+                <li><p><span class="font-bold">Pelvic Floor Activation:</span> Discover how to properly engage your pelvic floor to create intra-abdominal pressure, a key component for spinal stability.</p></li>
+                <li><p><span class="font-bold">Shoulder Girdle Stability:</span> Strengthen the muscles around your shoulder blades to prevent injury and create a solid base for overhead lifts.</p></li>
+                <li><p><span class="font-bold">Integrated Movement:</span> Learn how to combine pelvic floor and shoulder strength to lift with greater power and control.</p></li>
+            </ul>
+        </div>
+
+        <div id="video-content" class="tab-content hidden" role="tabpanel">
+            <h2 class="text-2xl font-semibold mb-4 text-[var(--primary-dark)]">Training Video</h2>
+            <p class="mb-4">
+                Watch the video below to see the exercises and techniques in action. Remember to follow along at your own pace and focus on proper form.
+            </p>
+            <div class="video-container">
+                <!-- IMPORTANT: Please replace the 'src' attribute below with the URL of your video hosted on GitHub -->
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const descriptionTab = document.getElementById('description-tab');
+        const videoTab = document.getElementById('video-tab');
+        const descriptionContent = document.getElementById('description-content');
+        const videoContent = document.getElementById('video-content');
+
+        function activateTab(tab, content) {
+            // Deactivate all tabs and hide all content
+            descriptionTab.classList.remove('active');
+            videoTab.classList.remove('active');
+            descriptionContent.classList.add('hidden');
+            videoContent.classList.add('hidden');
+
+            // Activate the clicked tab and show its content
+            tab.classList.add('active');
+            content.classList.remove('hidden');
+        }
+
+        descriptionTab.addEventListener('click', () => {
+            activateTab(descriptionTab, descriptionContent);
+        });
+
+        videoTab.addEventListener('click', () => {
+            activateTab(videoTab, videoContent);
+        });
+    </script>
+</body>
+</html>
